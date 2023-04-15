@@ -1,1 +1,5 @@
-export class Project {}
+export class Project {
+    name: string;
+    startDate: Date;
+    endDate: Date;
+}
