@@ -1,5 +1,7 @@
 services:
-  node:
+  esgi-node-clientlourd-firebase:
     build: .
     ports:
-      - 3000:3000
+      - 4000:3000
+    volumes:
+      - .:/app
