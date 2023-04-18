@@ -4,4 +4,5 @@ services:
     ports:
       - 4000:3000
     volumes:
-      - .:/app
+      - .:/usr/src/app
+    command: npm run start:debug
