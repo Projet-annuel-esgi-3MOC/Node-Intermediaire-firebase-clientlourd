@@ -5,6 +5,15 @@ Installation
 docker compose up -d --build
 ```
 
+Usage
+---
+http://localhost:4000
+
+Utile
+---
+
+* https://www.tomray.dev/nestjs-docker-compose-postgres
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
