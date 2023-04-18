@@ -21,8 +21,8 @@ const firebaseConfig = {
   };
   
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+export const app = initializeApp(firebaseConfig);
+export const db = getFirestore(app);
 
 // Get a list of cities from your database
 async function getCities(db) {
@@ -32,7 +32,7 @@ async function getCities(db) {
   return cityList;
 }
 
-const analytics = getAnalytics(app);
+export const analytics = getAnalytics(app);
 
 
 

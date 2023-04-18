@@ -1,11 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
+import { ProjectsServiceFirebase } from './dal/firebase';
 
 @Injectable()
 export class ProjectsService {
+  constructor(private entityCrud: ProjectsServiceFirebase) {}
+
   create(createProjectDto: CreateProjectDto) {
-    return 'This action adds a new project';
+    return this.entityCrud.create(createProjectDto);
   }
 
   findAll() {
