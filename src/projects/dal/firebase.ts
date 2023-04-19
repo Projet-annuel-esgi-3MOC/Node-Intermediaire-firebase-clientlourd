@@ -1,14 +1,14 @@
 import { db } from "src/_services/firebase";
 import { CreateProjectDto } from "../dto/create-project.dto";
 import { UpdateProjectDto } from "../dto/update-project.dto";
-import { addDoc, collection, doc, getDocs, refEqual } from "firebase/firestore/lite";
+import { addDoc, collection, deleteDoc, doc, getDocs, refEqual, setDoc } from "firebase/firestore/lite";
 
 export class ProjectsServiceFirebase implements EntityCrud {
  
-    create(createProjectDto: CreateProjectDto) {
-        const projectsCol = collection(db, 'dev-projects');
-        // const projectRef = doc(projectsCol, `${createProjectDto.name}`);
-        addDoc(projectsCol, createProjectDto);
+    async create(createProjectDto: CreateProjectDto) {
+        return await setDoc(
+            doc(db, 'dev-projects', createProjectDto.name), createProjectDto
+        );
     }
   
     async findAll() {
@@ -26,12 +26,16 @@ export class ProjectsServiceFirebase implements EntityCrud {
         return projectsList;
     }
   
-    update(name: string, updateProjectDto: UpdateProjectDto) {
-    //   return this.entityCrud.update(id, updateProjectDto);
+    async update(name: string, updateProjectDto: UpdateProjectDto) {
+        return await setDoc(
+            doc(db, 'dev-projects', updateProjectDto.name), updateProjectDto
+        );
     }
   
-    remove(name: string) {
-    //   return this.entityCrud.remove(id);
+    async remove(name: string) {
+        return await deleteDoc(
+            doc(db, 'dev-projects', name)
+        );
     }
   }
   
