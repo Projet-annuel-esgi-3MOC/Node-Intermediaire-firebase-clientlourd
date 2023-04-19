@@ -5,4 +5,4 @@ services:
       - 4000:3000
     volumes:
       - .:/usr/src/app
-    command: npm run start:debug
+    command: npm run start:prod
