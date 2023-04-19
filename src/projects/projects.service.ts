@@ -15,15 +15,15 @@ export class ProjectsService {
     return await this.entityCrud.findAll();
   }
 
-  findOne(id: number) {
-    return this.entityCrud.findOne(id);
+  findOne(name: string) {
+    return this.entityCrud.findOne(name);
   }
 
-  update(id: number, updateProjectDto: UpdateProjectDto) {
-    return this.entityCrud.update(id, updateProjectDto);
+  update(name: string, updateProjectDto: UpdateProjectDto) {
+    return this.entityCrud.update(name, updateProjectDto);
   }
 
-  remove(id: number) {
-    return this.entityCrud.remove(id);
+  remove(name: string) {
+    return this.entityCrud.remove(name);
   }
 }

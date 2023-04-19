@@ -3,9 +3,9 @@ interface EntityCrud {
     
     findAll();
 
-    findOne(id: number);
+    findOne(id: unknown);
 
-    update(id: number, updateProjectDto);
+    update(id: unknown, updateProjectDto);
 
-    remove(id: number);
+    remove(id: unknown);
 }

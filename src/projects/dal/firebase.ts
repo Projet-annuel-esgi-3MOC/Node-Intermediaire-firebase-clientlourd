@@ -18,15 +18,19 @@ export class ProjectsServiceFirebase implements EntityCrud {
         return projectsList;
     }
   
-    findOne(id: number) {
-    //   return this.entityCrud.findOne(id);
+    async findOne(name: string) {
+        const projectsCol = collection(db, 'dev-projects');
+        const projectsSnapshot = await getDocs(projectsCol);
+        const projectsList = projectsSnapshot.docs
+            .map(doc => doc.data()).filter(doc => doc.name === name)[0];
+        return projectsList;
     }
   
-    update(id: number, updateProjectDto: UpdateProjectDto) {
+    update(name: string, updateProjectDto: UpdateProjectDto) {
     //   return this.entityCrud.update(id, updateProjectDto);
     }
   
-    remove(id: number) {
+    remove(name: string) {
     //   return this.entityCrud.remove(id);
     }
   }
