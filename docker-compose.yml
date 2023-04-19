@@ -3,6 +3,6 @@ services:
     build: .
     ports:
       - 4000:3000
-    volumes:
-      - .:/usr/src/app
+    # volumes:
+    #   - .:/app
     command: npm run start:prod
