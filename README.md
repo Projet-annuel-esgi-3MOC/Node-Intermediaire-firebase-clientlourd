@@ -13,6 +13,8 @@ Utile
 ---
 
 * https://www.tomray.dev/nestjs-docker-compose-postgres
+* https://javascript.plainenglish.io/nestjs-with-firebase-the-complete-guide-aa0ade41cdef
+* https://docs.nestjs.com/providers
 
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>

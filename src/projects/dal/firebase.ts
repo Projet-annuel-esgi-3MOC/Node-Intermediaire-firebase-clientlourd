@@ -1,16 +1,18 @@
 import { db } from "src/_services/firebase";
 import { CreateProjectDto } from "../dto/create-project.dto";
 import { UpdateProjectDto } from "../dto/update-project.dto";
-import { collection, getDocs } from "firebase/firestore/lite";
+import { addDoc, collection, doc, getDocs, refEqual } from "firebase/firestore/lite";
 
 export class ProjectsServiceFirebase implements EntityCrud {
  
     create(createProjectDto: CreateProjectDto) {
-    //   return this.entityCrud.create(createProjectDto);
+        const projectsCol = collection(db, 'dev-projects');
+        // const projectRef = doc(projectsCol, `${createProjectDto.name}`);
+        addDoc(projectsCol, createProjectDto);
     }
   
     async findAll() {
-        const projectsCol = collection(db, 'cities');
+        const projectsCol = collection(db, 'dev-projects');
         const projectsSnapshot = await getDocs(projectsCol);
         const projectsList = projectsSnapshot.docs.map(doc => doc.data());
         return projectsList;
