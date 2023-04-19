@@ -1,6 +1,6 @@
 FROM node:current-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 COPY --chown=node:node package*.json ./
 
