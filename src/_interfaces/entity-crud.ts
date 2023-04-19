@@ -1,11 +1,15 @@
+interface UnknownStrings {
+    [U: string]: string;
+}
+
 interface EntityCrud {
-    create(createProjectDto);
+    create (string: UnknownStrings, createProjectDto);
     
-    findAll();
+    findAll(string: UnknownStrings);
 
-    findOne(id: unknown);
+    findOne(string: UnknownStrings);
 
-    update(id: unknown, updateProjectDto);
+    update(string: UnknownStrings, updateProjectDto);
 
-    remove(id: unknown);
+    remove(string: UnknownStrings);
 }

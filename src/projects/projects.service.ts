@@ -8,22 +8,22 @@ export class ProjectsService {
   constructor(private entityCrud: ProjectsServiceFirebase) {}
 
   create(createProjectDto: CreateProjectDto) {
-    return this.entityCrud.create(createProjectDto);
+    return this.entityCrud.create({}, createProjectDto);
   }
 
   async findAll() {
     return await this.entityCrud.findAll();
   }
 
-  findOne(name: string) {
-    return this.entityCrud.findOne(name);
+  findOne({name}: {[U: string]: string}) {
+    return this.entityCrud.findOne({name});
   }
 
-  update(name: string, updateProjectDto: UpdateProjectDto) {
-    return this.entityCrud.update(name, updateProjectDto);
+  update({name}: {[U: string]: string}, updateProjectDto: UpdateProjectDto) {
+    return this.entityCrud.update({name}, updateProjectDto);
   }
 
-  remove(name: string) {
-    return this.entityCrud.remove(name);
+  remove({name}: {[U: string]: string}) {
+    return this.entityCrud.remove({name});
   }
 }

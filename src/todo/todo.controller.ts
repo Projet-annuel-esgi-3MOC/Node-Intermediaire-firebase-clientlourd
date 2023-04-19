@@ -1,34 +1,37 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe } from '@nestjs/common';
 import { TodoService } from './todo.service';
 import { CreateTodoDto } from './dto/create-todo.dto';
 import { UpdateTodoDto } from './dto/update-todo.dto';
 
-@Controller('todo')
+@Controller('projects/:project/todo')
 export class TodoController {
   constructor(private readonly todoService: TodoService) {}
 
   @Post()
-  create(@Body() createTodoDto: CreateTodoDto) {
-    return this.todoService.create(createTodoDto);
+  @UsePipes(new ValidationPipe({ transform: true }))
+  create(
+    @Param('project') project: string, 
+    @Body() createTodoDto: CreateTodoDto) {
+    return this.todoService.create(project, createTodoDto);
   }
 
   @Get()
-  findAll() {
-    return this.todoService.findAll();
+  findAll(@Param('project') project: string) {
+    return this.todoService.findAll(project);
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.todoService.findOne(+id);
+  findOne(@Param('project') project: string, @Param('id') id: string) {
+    return this.todoService.findOne(project, id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
-    return this.todoService.update(+id, updateTodoDto);
+  update(@Param('project') project: string, @Param('id') id: string, @Body() updateTodoDto: UpdateTodoDto) {
+    return this.todoService.update(project, id, updateTodoDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.todoService.remove(+id);
+  remove(@Param('project') project: string, @Param('id') id: string) {
+    return this.todoService.remove(project, id);
   }
 }

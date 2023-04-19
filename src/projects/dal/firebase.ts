@@ -5,7 +5,7 @@ import { addDoc, collection, deleteDoc, doc, getDocs, refEqual, setDoc } from "f
 
 export class ProjectsServiceFirebase implements EntityCrud {
  
-    async create(createProjectDto: CreateProjectDto) {
+    async create({}: {[U: string]: string}, createProjectDto: CreateProjectDto) {
         return await setDoc(
             doc(db, 'dev-projects', createProjectDto.name), createProjectDto
         );
@@ -18,7 +18,7 @@ export class ProjectsServiceFirebase implements EntityCrud {
         return projectsList;
     }
   
-    async findOne(name: string) {
+    async findOne({name}: {[U: string]: string}) {
         const projectsCol = collection(db, 'dev-projects');
         const projectsSnapshot = await getDocs(projectsCol);
         const projectsList = projectsSnapshot.docs
@@ -26,13 +26,13 @@ export class ProjectsServiceFirebase implements EntityCrud {
         return projectsList;
     }
   
-    async update(name: string, updateProjectDto: UpdateProjectDto) {
+    async update({name}: {[U: string]: string}, updateProjectDto: UpdateProjectDto) {
         return await setDoc(
             doc(db, 'dev-projects', updateProjectDto.name), updateProjectDto
         );
     }
   
-    async remove(name: string) {
+    async remove({name}: {[U: string]: string}) {
         return await deleteDoc(
             doc(db, 'dev-projects', name)
         );

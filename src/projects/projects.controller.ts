@@ -19,16 +19,16 @@ export class ProjectsController {
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
-    return await this.projectsService.findOne(id);
+    return await this.projectsService.findOne({name: id});
   }
 
   @Patch(':id')
   async update(@Param('id') id: string, @Body() updateProjectDto: UpdateProjectDto) {
-    return await this.projectsService.update(id, updateProjectDto);
+    return await this.projectsService.update({name: id}, updateProjectDto);
   }
 
   @Delete(':id')
   async remove(@Param('id') id: string) {
-    return await this.projectsService.remove(id);
+    return await this.projectsService.remove({name: id});
   }
 }
