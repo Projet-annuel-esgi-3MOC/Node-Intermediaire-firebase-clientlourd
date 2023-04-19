@@ -32,7 +32,7 @@ async function getCities(db) {
   return cityList;
 }
 
-export const analytics = getAnalytics(app);
+// export const analytics = getAnalytics(app);
 
 
 

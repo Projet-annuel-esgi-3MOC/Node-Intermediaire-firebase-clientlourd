@@ -13,8 +13,8 @@ export class ProjectsController {
   }
 
   @Get()
-  findAll() {
-    return this.projectsService.findAll();
+  async findAll() {
+    return await this.projectsService.findAll();
   }
 
   @Get(':id')
